@@ -15,7 +15,7 @@ class Question(Base):
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
 
     topic = relationship("Topic", back_populates="questions")
-
+    answers = relationship("Answer", back_populates="question")
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
